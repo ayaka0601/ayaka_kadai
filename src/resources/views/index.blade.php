@@ -1,31 +1,38 @@
-@extends('layouts.app')
+@extends('layouts.default')
+<style>
+  th {
+    background-color: #289ADC;
+    color: white;
+    padding: 5px 40px;
+  }
+  tr:nth-child(odd) td{
+    background-color: #FFFFFF;
+  }
+  td {
+    padding: 25px 40px;
+    background-color: #EEEEEE;
+    text-align: center;
+  }
+</style>
+@section('title', 'index.blade.php')
 
-@section('title')
-商品一覧
-@endsection
- 
 @section('content')
-
-<div class="jumbotron top-img">
-    <p class="text-center text-white top-img-text">{{ config('app.name', 'Laravel')}}</p>
-</div>
-
-<div class="container">
-    <div class="top__title text-center">
-        All Products
-    </div>
-    <div class="row">
-        @foreach ($products as $product)
-        <a href="#" class="col-lg-4 col-md-6">
-            <div class="card">
-                <img src="{{ asset($product->image) }}" class="card-img"/>
-                <div class="card-body">
-                    <p class="card-title">{{ $product->name }}</p>
-                    <p class="card-text">¥{{ number_format($product->price) }} </p>
-                </div>
-            </div>
-        </a>
-        @endforeach
-    </div>
-</div>
+<table>
+    @csrf
+  <tr>
+    <th>name</th>
+    <th>price</th>
+    <th>age</th>
+    <th>nationality</th>
+  </tr>
+  @foreach ($products as $product)
+  <tr>
+    <td>{{$product->name}}</td>
+    <td>{{$product->price}}</td>
+    <td>{{$product->age}}</td>
+    <td>{{$product->nationality}}</td>
+  </tr>
+  @endforeach
+</table>
+{{ $products->links() }}
 @endsection

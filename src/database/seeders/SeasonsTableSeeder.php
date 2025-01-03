@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class SeasonsTableSeeder extends Seeder
 {
@@ -17,9 +18,10 @@ class SeasonsTableSeeder extends Seeder
             ['name' => 'spring', 'season' => '春'],
             ['name' => 'summer', 'season' => '夏'],
             ['name' => 'autumn', 'season' => '秋'],
-            ['name' => 'winter', 'season' => '春'],
+            ['name' => 'winter', 'season' => '冬']
         ];
         foreach ($params as $param) {
-        }   DB::table('seasons')->insert($param);
+            DB::table('seasons')->insert($param);
+        }
     }
 }
