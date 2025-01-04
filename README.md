@@ -30,7 +30,11 @@ git clone git@github.com:ayaka0601/ayaka_kadai.git
 1.DockerDesktopアプリを立ち上げる  
 2.docker-compose up -d --build
 ```
-MacのM1・M2チップのPCの場合、no matching manifest for linux/arm64/v8 in the manifest list entriesのメッセージが表示されビルドができないことがあります。 エラーが発生する場合は、docker-compose.ymlファイルの「mysql」内に「platform」の項目を追加で記載してください
+MacのM1・M2チップのPCの場合、no matching manifest
+for linux/arm64/v8 in the manifest list entriesの
+メッセージが表示されビルドができないことがあります。
+エラーが発生する場合は、docker-compose.ymlファイルの
+「mysql」内に「platform」の項目を追加で記載してください.
 
 mysql:
     platform: linux/x86_64(この文追加)
