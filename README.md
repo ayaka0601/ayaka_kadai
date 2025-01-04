@@ -6,43 +6,37 @@
 
 ## URL
 ```
-
 ・開発環境：http://localhost/
 ・phpMyAdmin:http://localhost:8080/
-
 ```
 
 ## 使用技術（実行環境）
 ```
-
 PHP 7.4.9
 Laravel Framework 8.83.8
 MySQL 8.0.26
 Nginx
 Docker/Docker-compose
-
 ```
 
 ## 環境構築
 
 #### リポジトリからダウンロードして下さい
 ```
-
 git clone git@github.com:ayaka0601/ayaka_kadai.git
-
 ```
 
 #### Docker環境構築
 1.DockerDesktopアプリを立ち上げる  
 2.docker-compose up -d --build
 ```
-
 MacのM1・M2チップのPCの場合、no matching manifest for linux/arm64/v8 in the manifest list entriesのメッセージが表示されビルドができないことがあります。 エラーが発生する場合は、docker-compose.ymlファイルの「mysql」内に「platform」の項目を追加で記載してください
+```
+```
 mysql:
     platform: linux/x86_64(この文追加)
     image: mysql:8.0.26
     environment:
-
 ```
 
 #### Laravel環境構築
@@ -56,30 +50,25 @@ DB_PORT=3306
 DB_DATABASE=laravel_db
 DB_USERNAME=laravel_user
 DB_PASSWORD=laravel_pass
-
 ```
 
 4.アプリケーションキーの作成
 ```
 php artisan key:generate
-
 ```
 
 5.マイグレーションの実行
 ```
 php artisan migrate
-
 ```
 
 6.シーディングの実行
 ```
 php artisan db:seed
-
 ```
 
 ```
 http://localhostにアクセスして
 "The stream or file could not be opened"というエラーが発生した場合は
 ファイルの権限を変更して対応お願いします
-
 ```
