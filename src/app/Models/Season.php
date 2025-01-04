@@ -14,6 +14,11 @@ class Season extends Model
 
     public function getTitle()
     {
-        return 'ID' . $this->id . ':' . $this->title;
+        return 'NAME' . $this->name;
+    }
+
+    public function product()
+    {
+        return $this->belongsTo('App\Models\Product');
     }
 }

@@ -25,4 +25,20 @@ class Product extends Model
         $products = DB::table($this->table)->get();
         return $products;
     }
+
+    public function getDetail()
+    {
+        $txt = 'ID:' . $this->id . ' ' . $this->name . '(' . $this->price .  '円' . ') ' . $this->description;
+        return $txt;
+    }
+
+    public function seasons()
+    {
+        return $this->hasOne('App\Models\season');
+    }
+
+    public function reviews()
+    {
+        return $this->belongsToMany(Season::class);
+    }
 }

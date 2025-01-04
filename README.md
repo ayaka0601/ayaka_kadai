@@ -1,5 +1,5 @@
 ## アプリケーション名
-確認テスト：
+確認テスト：mogitate
 
 ## ER図
 ![ER図](ER.drawio.png)
@@ -22,18 +22,6 @@ Nginx
 Docker/Docker-compose
 
 ```
-※バージョン確認コマンド
-⚫︎docker-compose exec php bash
-PHPのバージョン
-php -version
-laravelのバージョン
-php artisan --version
-exit
-
-⚫︎docker-compose exec mysql bash
-MySQLのバージョン
-mysql --version
-
 
 ## 環境構築
 ```
@@ -41,18 +29,15 @@ mysql --version
 リポジトリからダウンロードして下さい
 git clone <リポジトリURL>
 
-srcディレクトリに.envファイルを作成し
-docker-compose.ymlのDBの設定を記入して下さい
-$ cp .env.example .env
----
-DB_HOST=XXX
-DB_DATABASE=XXX
-DB_USERNAME=XXX
-DB_PASSWORD=XXX
----
-
 Docker環境構築
+---
 $ docker-compose up -d --build
+MacのM1・M2チップのPCの場合、no matching manifest for linux/arm64/v8 in the manifest list entriesのメッセージが表示されビルドができないことがあります。 エラーが発生する場合は、docker-compose.ymlファイルの「mysql」内に「platform」の項目を追加で記載してください
+mysql:
+    platform: linux/x86_64(この文追加)
+    image: mysql:8.0.26
+    environment:
+---
 $ docker-compose exec php bash
 > composer install
 > php artisan key:generate
@@ -65,9 +50,25 @@ http://localhostにアクセスして
 Laravel環境構築
 1.docker-compose exec php bash
 2.composer install
-3..env.exampleファイルから.envを作成し、環境変数を変更
-4.php artisan key:generate
-5.php artisan migrate
-6.php artisan db:see
-
+3..env.exampleファイルから.envを作成し、以下に環境変数を変更
+---
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=laravel_db
+DB_USERNAME=laravel_user
+DB_PASSWORD=laravel_pass
+---
+4.アプリケーションキーの作成
+---
+php artisan key:generate
+---
+5.マイグレーションの実行
+---
+php artisan migrate
+---
+6.シーディングの実行
+---
+php artisan db:see
+---
 ```

@@ -7,15 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FashionablyLate</title>
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/index.css') }}" />
 </head>
 
 <body>
     <header class="header">
         <div class="header__inner">
-            <a class="header__logo" href="/">
-                商品登録
-            </a>
+            <a class="header__logo" href="/"></a>
         </div>
     </header>
 
@@ -32,7 +29,7 @@
                     </div>
                     <div class="form__group-content">
                         <div class="form__input--text">
-                            <label for="first-name">商品名</label>
+                            <label for="first-name"></label>
                             <input type="text" id="name" name="name" placeholder="商品名を入力" value="{{ old('name') }}" />
                         </div>
                         <div class="form__error">
@@ -48,7 +45,7 @@
                     </div>
                     <div class="form__group-content">
                         <div class="form__input--text">
-                            <label for="first-name">値段</label>
+                            <label for="first-name"></label>
                             <input type="text" id="price" name="price" placeholder="値段を入力" value="{{ old('price') }}" />
                         </div>
                         <div class="form__error">
@@ -60,8 +57,8 @@
                 </div>
                 <div class="form__group-content">
                     <div class="form__input--file">
-                        <label for="first-name">商品画像</label>必須
-                        <input type="file" id="image" name="image" placeholder="ファイルを選択" value="{{ old('file') }}" />
+                        <span class="form-item-label-required">商品画像</span>必須
+                        <input type="file" id="image" name="image" placeholder="ファイルを選択" value="{{ old('image') }}" />
                     </div>
                     <div class="form__error">
                         @error('price')

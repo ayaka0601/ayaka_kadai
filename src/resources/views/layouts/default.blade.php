@@ -19,6 +19,22 @@
     .content {
       margin:10px;
     }
+    .flex {
+        display: flex;
+        flex-wrap: wrap-reverse;
+    }
+    img {
+        vertical-align: middle;
+        border-style: none;
+    }
+    .practice__card {
+        width: 30%;
+        box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+    }
+    .card__img img {
+        width: 100%;
+    }
+</style>
   </style>
 </head>
 <body>
