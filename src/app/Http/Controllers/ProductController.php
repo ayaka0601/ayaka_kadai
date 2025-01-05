@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Request;
-use App\Models\Product;
 use App\Http\Requests\ProductRequest;
+use App\Models\Product;
+use App\Http\Requests\Request;
 
 
 
@@ -15,6 +15,17 @@ class ProductController extends Controller
         $products = Product::simplePaginate(6);
         return view('index', compact('products'));
     }
+
+    //public function update(ProductRequest $request)
+    //{
+        //$product = $request->only(['content']);
+        //Product::find($request->id)->update($product);
+
+       //return redirect('/products')->with('message', '商品を更新しました');
+    //}
+
+
+
 
     public function find()
     {
@@ -46,43 +57,17 @@ class ProductController extends Controller
 
     public function confirm(productRequest $request)
     {
-        $content = $request->only(['name', 'price', 'image', 'season_id', 'description']);
-        $request->validate([
-            'image' => ['image', 'mimes:jpeg,png,jpg,gif'],
-        ]);
-
-        $name = $request->name;
-        $image = $request->file('image');
-
-        if ($image) {
-            // 拡張子の取得
-            $extension = $image->getClientOriginalExtension();
-
-            // 新しいファイル名を作る（ランダムな文字数とする）
-            $new_name = uniqid() . "." . $extension;
-
-            // 一時的にtmpフォルダに保存する
-            $image_path = Storage::putFileAs(
-                'tmp',
-                $request->file('image'),
-                $new_name
-            );
-        } else {
-            $new_name = 'noimage.jpg';
-            $extension = '0';
-            $image_path = 'noimage.jpg';
-        }
-
-        return view('confirm', compact('contact'));
+        $product = $request->only(['name', 'price', 'image', 'season_id', 'description']);
+        return view('confirm', compact('product'));
     }
 
     public function store(ProductRequest $request)
     {
-        $contact = $request->only(['name', 'price', 'image', 'season_id', 'description']);
-        Product::create($contact);
+        $product = $request->only(['name', 'price', 'image', 'season_id', 'description']);
+        Product::create($product);
+
         return view('complete');
     }
-
 
     public function create(ProductRequest $request)
     {

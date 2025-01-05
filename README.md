@@ -72,6 +72,7 @@ php artisan db:seed
 
 ```
 http://localhostにアクセスして
-"The stream or file could not be opened"というエラーが発生した場合は
-ファイルの権限を変更して対応お願いします
+"The stream or file could not be opened"という
+エラーが発生した場合はファイルの権限を変更して対応を
+お願いします。
 ```
