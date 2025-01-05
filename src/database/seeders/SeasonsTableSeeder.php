@@ -14,11 +14,21 @@ class SeasonsTableSeeder extends Seeder
      */
     public function run()
     {
-        $params = [
-            'name' => '春', '夏', '秋', '冬'
+        $param = [
+            'name' => '春',
         ];
-        foreach ($params as $param) {
-            DB::table('seasons')->insert($params);
-        }
+        DB::table('seasons')->insert($param);
+        $param = [
+            'name' => '夏',
+        ];
+        DB::table('seasons')->insert($param);
+        $param = [
+            'name' => '秋',
+        ];
+        DB::table('seasons')->insert($param);
+        $param = [
+            'name' => '冬',
+        ];
+        DB::table('seasons')->insert($param);
     }
 }
