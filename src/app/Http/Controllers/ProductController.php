@@ -12,9 +12,12 @@ class ProductController extends Controller
 {
     public function index()
     {
+        $products = Product::orderBy('price', 'desc')->get();
+        $products = Product::orderBy('price', 'asc')->get();
         $products = Product::simplePaginate(6);
         return view('index', compact('products'));
     }
+
 
     //public function update(ProductRequest $request)
     //{
@@ -107,5 +110,4 @@ class ProductController extends Controller
         $items = Product::all();
         return view('product.index', ['items' => $items]);
     }
-
 }
