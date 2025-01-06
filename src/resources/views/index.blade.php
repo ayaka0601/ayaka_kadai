@@ -42,7 +42,7 @@
         @foreach ($products as $product)
         <div class="flex__item">
           <div class="card__img">
-            <img src="{{ asset($product->image) }}" class="card__img"/>
+            <img src="{{ asset('storage/'$product->image) }}" class="card__img"/>
               <div class="card__body">
                 <p class="card__title">{{ $product->name }}</p>
                 <p class="card__text">¥{{ number_format($product->price) }} </p>
