@@ -58,7 +58,7 @@ class ProductController extends Controller
         return view('register');
     }
 
-    public function confirm(productRequest $request)
+    public function confirm(ProductRequest $request)
     {
         $product = $request->only(['name', 'price', 'image', 'season_id', 'description']);
         return view('confirm', compact('product'));

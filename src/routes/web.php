@@ -5,7 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SeasonController;
 
 Route::get('/products', [ProductController::class, 'index']);
-Route::get('/products/register', [productController::class, 'register']);
+Route::get('/products/register', [ProductController::class, 'register']);
 Route::post('/products/confirm', [ProductController::class, 'confirm']);
 Route::post('products/complete', [ProductController::class, 'store']);
 Route::post('/products/register', [ProductController::class, 'create']);
@@ -21,4 +21,4 @@ Route::prefix('season')->group(function () {
     Route::get('/products/register', [SeasonController::class, 'add']);
     Route::post('/products/register', [SeasonController::class, 'create']);
 });
-Route::get('/relation', [productController::class, 'relate']);
+Route::get('/relation', [ProductController::class, 'relate']);

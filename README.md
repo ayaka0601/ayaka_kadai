@@ -70,6 +70,10 @@ php artisan migrate
 php artisan db:seed
 ```
 
+7.シンボリックリンクの設定
+```
+php artisan storage:link
+```
 ```
 http://localhostにアクセスして
 "The stream or file could not be opened"という
