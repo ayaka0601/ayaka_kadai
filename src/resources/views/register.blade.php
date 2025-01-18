@@ -15,7 +15,7 @@
       <div class="mogitate__heading">
         <h2>商品登録</h2>
       </div>
-      <form class="form" action="/products/register" method="post" enctype="multipart/form-data">
+      <form class="form" action="/products/upload" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form__group">
           <div class="form__group-title">
